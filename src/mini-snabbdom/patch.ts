@@ -1,9 +1,13 @@
 import createElement from './createElement'
-import { vnode } from './vnode' 
+import { vnode, VNode } from './vnode' 
 
-export function patch(oldVnode, newVnode) {
-  // 判断第一个参数是否为 vnode
-  if (oldVnode.sel == undefined) {
+function isEle(pet: Element | VNode): pet is Element {
+  return (pet as Element).tagName !== undefined;
+}
+
+export function patch(oldVnode: Element | VNode, newVnode: VNode) {
+  // 判断第一个参数是否为 Element 类型
+  if (isEle(oldVnode)) {
     // 创建一个 vnode
     oldVnode = vnode(oldVnode.tagName.toLowerCase(), {}, [], undefined, oldVnode);
   }
@@ -13,7 +17,6 @@ export function patch(oldVnode, newVnode) {
     // 同一个节点，则开始 diffs 算法
     console.log('diff')
   } else {
-    // 创建真实 dom
     const dom = createElement(newVnode)
     // 先插入新的节点后再删除旧节点
     if (oldVnode.elm !== undefined && dom) {

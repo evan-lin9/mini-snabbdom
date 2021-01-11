@@ -1,15 +1,15 @@
-import { h } from './h'
-import { patch } from './patch'
-
-const vnode = h('ul', [
-  h('li', '苹果'),
-  h('li', h('div', [
-  h('li', '苹果'),
-    h('p', 'hh'),
-    h('p', 'hh'), 
-  ])),
-]);
+import { h } from './mini-snabbdom/h'
+import { patch } from './mini-snabbdom/patch'
 
 const root: HTMLElement = document.getElementById('root');
+
+const vnode = h(
+  'ul', {}, [
+    h('li', {}, 'A'),
+    h('li', {}, 'B'),
+    h('li', {}, 'C'),
+  ]
+)
+console.log(vnode)
 patch(root, vnode)
 

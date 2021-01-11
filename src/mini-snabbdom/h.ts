@@ -1,5 +1,5 @@
 import { vnode, VNode, VNodeData } from './vnode'
-import { isDef, isNumOrStr } from './utils/index'
+import { isDef, isNumOrStr } from '../utils/index'
 
 export type VNodeChildElement = VNode | string | number | undefined | null
 export type ArrayOrElement<T> = T | T[]
