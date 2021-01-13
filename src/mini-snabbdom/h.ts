@@ -37,6 +37,7 @@ export function h(sel: string, second?: any, third?: any): VNode {
       data = second
     }
   }
+  
   if (isDef(children)) {
     for (let i = 0; i < children.length; ++i) {
       if (isNumOrStr(children[i])) {
